@@ -1,13 +1,13 @@
 from settings import VK_TOKEN, USER_ID
-import requests
 import pprint
 import vk_api
+import argparse
 
-# method = 'wall.get'
-# token = VK_TOKEN
-# version = 5.131
-# session = vk_api.VkApi(token=token)
-# url = f"https://api.vk.com/method/{method}?owner_id={USER_ID}&access_token={token}&v={version}"
+# Added for running im_vkapi with parameter to command prompt
+# Example: py .\im_vkapi.py -id 12345678
+parsers = argparse.ArgumentParser(description="Choice the parameters")
+parsers.add_argument('-id', default=USER_ID)
+args = parsers.parse_args()
 
 
 class ImVkApi:
@@ -43,10 +43,8 @@ class ImVkApi:
 
 
 if __name__ == '__main__':
-    imvkapi = ImVkApi()
-    # r = requests.get(url=url)
-    # print(r.status_code)
-    # pprint.pprint(r.json())
+    imvkapi = ImVkApi(user_id=args.id)
+    # imvkapi = ImVkApi()
     # pprint.pprint(get_wall_entries())
     # pprint.pprint(imvkapi.get_online_friends_list())
     pprint.pprint(imvkapi.get_friends_list())
