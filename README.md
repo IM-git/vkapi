@@ -1,6 +1,7 @@
 ## VKAPI
 ____
-How it works.
+Getting the list with all/online friends to vk.\
+How it works:
 
 1. Need to create your own vk [access token](https://dev.vk.com/api/getting-started). Simple way to [create vk app and get token](https://badtry.net/vk-api-osnovy-poluchieniie-tokiena).
 2. Create [.env](https://github.com/theskumar/python-dotenv) for safe storage data([habr article](https://habr.com/ru/post/472674/)).
