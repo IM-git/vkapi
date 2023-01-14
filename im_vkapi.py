@@ -1,17 +1,6 @@
 from settings import VK_TOKEN, USER_ID
-import pprint
 import vk_api
-import argparse
-from vk_request import vk_request
-
-
-# Added for running im_vkapi with parameter to command prompt
-# Example: py .\im_vkapi.py -id 12345678 -f online
-def parameters():
-    parsers = argparse.ArgumentParser(description="Choice the parameters")
-    parsers.add_argument('-id', default=USER_ID)
-    parsers.add_argument('-f', default="all")
-    return [parsers.parse_args().id, parsers.parse_args().f]
+from tools import Tools
 
 
 class ImVkApi:
@@ -58,22 +47,20 @@ class ImVkApi:
 
 
 if __name__ == '__main__':
-    parameters_id = parameters()[0]
-    parameters_f = parameters()[1]
-
+    tools = Tools()
+    parameters_id = tools.parameters()[0]
+    parameters_f = tools.parameters()[1]
     imvkapi = ImVkApi(user_id=parameters_id)
-
-    # pprint.pprint(imvkapi.get_wall_entries())
-    # pprint.pprint(imvkapi.get_online_friends_list())
-    # pprint.pprint(imvkapi.get_friends_list())
     got_list = []
+    # Check the selected parameter "friends"
     if parameters_f.lower() == "all":
-        # pprint.pprint(imvkapi.get_id_list_friends())
         got_list = imvkapi.get_id_list_friends()
     elif parameters_f.lower() == "online":
-        # pprint.pprint(imvkapi.get_online_friends_list())
         got_list = imvkapi.get_online_friends_list()
-
+    # Parsing the list of ids and deleting digital ids
+    vk_ids = []
     for _ in got_list:
-        print(vk_request(_))
+        vk_ids.append(tools.vk_request(_))
+
+    print(tools.del_digital_id(vk_ids))
 
