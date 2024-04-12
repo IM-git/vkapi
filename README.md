@@ -13,3 +13,6 @@ Example:
         USER_ID=test_any_user_id
         USER_ID_TEXT=test_any_user_text_id
 3. Run script: `py im_vkapi.py -id 12345678 -f online`
+
+test test
+123 4
