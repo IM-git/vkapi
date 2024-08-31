@@ -1,6 +1,7 @@
 ## VKAPI
 ____
 Getting the list with all/online friends to vk.\
+0101010101010101
 How it works:
 
 1. Need to create your own vk [access token](https://dev.vk.com/api/getting-started). Simple way to [create vk app and get token](https://badtry.net/vk-api-osnovy-poluchieniie-tokiena).
